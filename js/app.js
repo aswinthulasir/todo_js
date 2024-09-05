@@ -28,44 +28,47 @@ fetch('https://jsonplaceholder.typicode.com/todos')
                 
                 todoList.appendChild(todoItem);
             });
+
+            addCheckboxListeners();
         })
         .catch(error => console.error('Error fetching data:', error));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      function validateCheckboxes() {
-        const checkboxes = document.querySelectorAll('.todo-checkbox');
-        let checkedCount = 0;
-
-     
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                checkedCount++;
-            }
-        });
-
- 
-        if (checkedCount <= 5) {
-            alert("Task completed succesfully");
-        } else {
-            alert("Check minimum 5");
+            
+        function addCheckboxListeners() {
+            const checkboxes = document.querySelectorAll('.todo-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', validateCheckboxes);
+            });
         }
-    }
+        
+       
+        function validateCheckboxes() {
+            const checkboxes = document.querySelectorAll('.todo-checkbox');
+            let checkedCount = 0;
+        
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+        
+            if (checkedCount === 5) {
+                alert("Congrats. 5 Tasks have been Successfully Completed");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
